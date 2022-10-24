@@ -6,7 +6,7 @@ import AddHabito from "./AddHabito";
 
 export default function Habitos() {
   const { image, setImage } = useContext(AuthContext);
-  const [ clicked, setClicked] = useState(false);
+  const [ newHabit, setNewHabit] = useState(false);
   return (
     <>
       <BackGround>
@@ -17,9 +17,9 @@ export default function Habitos() {
         <Content>
           <ContentHeader>
             <span>Meus Hábitos</span>
-            <div onClick={() => setClicked(!clicked)}>+</div>
+            <div onClick={ () => setNewHabit(true) }>+</div>
           </ContentHeader>
-          <AddHabito show={clicked}/>
+          <AddHabito show={newHabit}/>
           <ContentHabitos />
         </Content>
         <Footer>
@@ -47,6 +47,7 @@ const Header = styled.div`
   justify-content: space-between;
   padding: 0 18px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  background-color: #126BA5;
 
   span {
     font-family: "Playball", cursive;
@@ -84,6 +85,7 @@ const ContentHeader = styled.div`
     color: white;
     font-size: 27px;
     border-radius: 5px;
+    background-color: #52B6FF;
   }
   span {
     color: #126ba5;

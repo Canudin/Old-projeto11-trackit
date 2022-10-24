@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import AddHabitoDay from "./AddHabitoDay.js";
 
 export default function AddHabito(props) {
   const [ sun, setSun] = useState(false);
@@ -9,22 +10,21 @@ export default function AddHabito(props) {
   const [ thu, setThu] = useState(false);
   const [ fri, setFri] = useState(false);
   const [ sat, setSat] = useState(false);
+  const dayName =["D", "S", "T", "Q", "Q", "S", "S"];
+  const week = [sun, mon, tue, wed, thu, fri, sat];
+  const setWeek = [setMon, setTue, setWed, setThu, setFri, setSat];
   
   return (
     <>
       <NovoHabito>
         <input type="text" placeholder="nome do hábito"></input>
         <DiaHabito>
-        <div><span>S</span></div>
-        <div><span>M</span></div>
-        <div><span>T</span></div>
-        <div><span>W</span></div>
-        <div><span>T</span></div>
-        <div><span>F</span></div>
-        <div><span>S</span></div>
+        {week.map((day, index) => (
+          <AddHabitoDay day={week} setDay={setWeek[index]} dayName={dayName[index]}>
+          </AddHabitoDay>
+        ))}
         </DiaHabito>
       </NovoHabito>
-
     </>
   );
 }
@@ -58,22 +58,9 @@ const NovoHabito = styled.div`
 
 `;
 
+
 const DiaHabito = styled.div`
   display: flex;
   width: 240px;
   margin-left: 18px;
-  
-  div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d4d4d4;
-  box-sizing: border-box;
-  width: 30px;
-  height: 30px;
-  background-color: white;
-  border: 1px solid #d4d4d4;
-    border-radius: 5px;
-  margin: 8px 2px 0 2px;
-  }
-`;
+  `;
